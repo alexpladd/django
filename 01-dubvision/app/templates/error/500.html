@@ -1,0 +1,34 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block social_medias %}
+    {% for social_media in social_medias %}
+        {% if social_media.name|lower == 'spotify' %}
+            <li>
+                <a href="https://open.{{ social_media.name|lower }}.com/{{ social_media.slug }}" class="pl-0 pr-3" target="_blank"><span class="icon-{{ social_media.name|lower }}"></span></a>
+            </li>
+        {% else %}
+            <li>
+                <a href="https://{{ social_media.name|lower }}.com/{{ social_media.slug }}" class="pl-0 pr-3" target="_blank"><span class="icon-{{ social_media.name|lower }}"></span></a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <br/>
+    
+    <div class="col-md-7">
+        <main>
+            <section>
+                <h1 style="color: white;">Server Error (500)</h1>
+                <p>We are working to solve the problem, sorry for the inconvenience.</p>
+                <p>
+                    You can return to our homepage by <a href="{% url 'index' %}" style="color: white;">clicking here</a>.
+                </p>
+            </section>
+        </main>
+    </div>
+{% endblock %}

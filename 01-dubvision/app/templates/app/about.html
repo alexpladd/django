@@ -1,0 +1,49 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block social_medias %}
+    {% for social_media in social_medias %}
+        {% if social_media.name|lower == 'spotify' %}
+            <li>
+                <a href="https://open.{{ social_media.name|lower }}.com/{{ social_media.slug }}" class="pl-0 pr-3" target="_blank"><span class="icon-{{ social_media.name|lower }}"></span></a>
+            </li>
+        {% else %}
+            <li>
+                <a href="https://{{ social_media.name|lower }}.com/{{ social_media.slug }}" class="pl-0 pr-3" target="_blank"><span class="icon-{{ social_media.name|lower }}"></span></a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    
+    <div class="site-section"  data-aos="fade">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div class="row mb-5">
+              <div class="col-12 ">
+                <h2 class="site-section-heading text-center">{{ title }}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="row mb-5">
+            {% for a in about %}
+            <div class="col-md-7">
+                <img src="{{ a.image.url }}" alt="Images" class="img-fluid">
+            </div>
+            <div class="col-md-4 ml-auto">
+                <h3 class="text-white">{{ a.title }}</h3>
+                <p>{{ a.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endblock %}
+

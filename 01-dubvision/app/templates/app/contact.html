@@ -1,0 +1,51 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block social_medias %}
+    {% for social_media in social_medias %}
+        {% if social_media.name|lower == 'spotify' %}
+            <li>
+                <a href="https://open.{{ social_media.name|lower }}.com/{{ social_media.slug }}" class="pl-0 pr-3" target="_blank"><span class="icon-{{ social_media.name|lower }}"></span></a>
+            </li>
+        {% else %}
+            <li>
+                <a href="https://{{ social_media.name|lower }}.com/{{ social_media.slug }}" class="pl-0 pr-3" target="_blank"><span class="icon-{{ social_media.name|lower }}"></span></a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <div class="site-section"  data-aos="fade">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div class="row mb-5">
+              <div class="col-12">
+                <h2 class="site-section-heading text-center"></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        {% for contact in contacts %}
+            <h1 class="text-white" style="text-align:center;">{{ contact.title }}</h1>
+            <p style="text-align:center;">
+                <a href="mailto:{{ contact.email }}" style="color: white;">{{ contact.email }}</a>
+            </p>
+            <br/>
+            <br/>
+        {% endfor %}
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+{% endblock %}

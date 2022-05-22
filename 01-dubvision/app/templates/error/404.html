@@ -1,0 +1,38 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block social_medias %}
+    {% for social_media in social_medias %}
+        {% if social_media.name|lower == 'spotify' %}
+            <li>
+                <a href="https://open.{{ social_media.name|lower }}.com/{{ social_media.slug }}" class="pl-0 pr-3" target="_blank"><span class="icon-{{ social_media.name|lower }}"></span></a>
+            </li>
+        {% else %}
+            <li>
+                <a href="https://{{ social_media.name|lower }}.com/{{ social_media.slug }}" class="pl-0 pr-3" target="_blank"><span class="icon-{{ social_media.name|lower }}"></span></a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <br/>
+    
+    <div class="col-md-7">
+        <main>
+            <section>
+                <h1 style="color: white;">Error 404</h1>
+                <p>We couldn't find the page you were looking for. This is either because:</p>
+                <ul>
+                    <li>There is an error in the URL entered into your web browser. Please check the URL and try again.</li>
+                    <li>The page you are looking for has been moved or deleted.</li>
+                </ul>
+                <p>
+                    You can return to our homepage by <a href="{% url 'index' %}" style="color: white;">clicking here</a>.
+                </p>
+            </section>
+        </main>
+    </div>
+{% endblock %}
